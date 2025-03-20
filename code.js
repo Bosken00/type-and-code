@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "B",
+  testo: "a",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -9,7 +9,7 @@ export const configurazione = {
   sensibilitàMicrofonoBase: 1,
   densitàPuntiBase: 1,
 
-  nascondiInterfaccia: false,
+  nascondiInterfaccia: true,
 };
 
 /**
@@ -42,18 +42,14 @@ export function disegnaPunto({
   beta = 0,
   gamma = 0,
 }) {
-  const size = sin((frameCount + indice) * 6) * ((volume * unita) / 2) * unita;
-
-  if (indice % 2 == 0) {
-    fill("black");
-  } else {
-    fill("white");
-  }
-  noStroke();
+  // larghezza = map(volume, 0, 10, 500, 400);
 
   push();
-  translate(x, y);
-  ellipse(0, 0, size);
+  let larghezza = map(sin(frameCount * 20 + indice), -1, 1, 400, 200);
+  stroke(180, 0, 0); // colore rosso
+  let lunghezza = map(volume * 60, 0, 1, 50, 200);
+
+  rect(x, y, larghezza, 2);
   pop();
 }
 
@@ -70,6 +66,7 @@ export function caricamentoRisorse() {}
 export function impostazioni() {
   frameRate(30);
   angleMode(DEGREES);
+  rectMode(CENTER);
 }
 
 /**
@@ -77,11 +74,16 @@ export function impostazioni() {
  * @param {function} disegnaTesto - La funzione che disegna il testo
  */
 export function sotto(disegnaTesto) {
-  background("deeppink");
+  background("black");
 
   // [INFO] Rimuovi il commento per disegnare il testo
-  fill("white");
+  fill("pink");
+
+  push();
+  let testo = map(sin(frameCount * 10), -1, 1, -180, 130);
+  translate(testo, 0);
   disegnaTesto();
+  pop();
 }
 
 /**
