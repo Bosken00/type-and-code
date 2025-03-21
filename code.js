@@ -46,7 +46,7 @@ export function disegnaPunto({
 
   push();
   translate(x, y);
-
+  stroke("pink");
   line(0, 0, gamma, beta);
 
   pop();
@@ -75,14 +75,14 @@ export function impostazioni() {
 export function sotto(disegnaTesto) {
   background("black");
 
-  // [INFO] Rimuovi il commento per disegnare il testo
-  fill("pink");
+  // // [INFO] Rimuovi il commento per disegnare il testo
+  // fill("pink");
 
-  push();
-  let testo = map(sin(frameCount * 10), -1, 1, -180, 130);
-  translate(testo, 0);
-  disegnaTesto();
-  pop();
+  // push();
+  // let testo = map(sin(frameCount * 10), -1, 1, -180, 130);
+  // translate(testo, 0);
+  // disegnaTesto();
+  // pop();
 }
 
 /**
