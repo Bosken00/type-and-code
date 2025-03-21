@@ -1,5 +1,5 @@
 export const configurazione = {
-  testo: "a",
+  testo: "spype",
 
   dimensione: 0.8,
   interlinea: 0.7,
@@ -46,10 +46,13 @@ export function disegnaPunto({
 
   push();
   let larghezza = map(sin(frameCount * 20 + indice), -1, 1, 400, 200);
-  stroke(180, 0, 0); // colore rosso
+
+  if (indice) stroke(210, 0, 0); // colore rosso
+
   let lunghezza = map(volume * 60, 0, 1, 50, 200);
 
   rect(x, y, larghezza, 2);
+
   pop();
 }
 
